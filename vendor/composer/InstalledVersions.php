@@ -30,7 +30,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '8ff53190f1845bcba630a34d4e30350a9ad311ee',
+    'reference' => 'cf294b0e529dcac39da86e076ecb523ac264e54e',
     'name' => 'marceloalbam/tem-edsi',
   ),
   'versions' => 
@@ -42,7 +42,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '8ff53190f1845bcba630a34d4e30350a9ad311ee',
+      'reference' => 'cf294b0e529dcac39da86e076ecb523ac264e54e',
     ),
     'squizlabs/php_codesniffer' => 
     array (
