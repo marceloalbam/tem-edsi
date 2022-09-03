@@ -1,4 +1,4 @@
-name: NPM Clid
+name: NPM Cli
 
 on:
   pull_request:
