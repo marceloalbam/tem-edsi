@@ -1,0 +1,19 @@
+name: NPM Cli
+
+on:
+  pull_request:
+  push:
+    branches:
+    - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 12
+      - run: npm install -g npm-cli-login
+      - run: npm-cli-login -u marcegmail -p Chelo5208812 -e marce.alba.m@gmail.com
+      - run: cat ~/.npmrc
