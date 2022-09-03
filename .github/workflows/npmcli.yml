@@ -16,5 +16,3 @@ jobs:
           node-version: 12
       - run: npm install -g npm-cli-login
       - run: npm-cli-login -u marcegmail -p Chelo5208812 -e marce.alba.m@gmail.com
-      - env:
-          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
