@@ -1,0 +1,193 @@
+@charset	'utf-8';
+$edsi-dark-blue: #0b3c71;
+$oserv-border-color: #707070;
+$oserv-bg-color: #fff;
+$h2-font-size: 30px;
+$h3-font-size: 20px;
+$p-font-size: 18px;
+$h-font-weight: 400;
+$edsi-light-gray: #f6f6f6;
+$edsi-menu-font-size: 20px;
+
+.site-inner {
+  & .wrap {
+    max-width: 100%;
+    padding: 0;
+	}
+}
+
+.site-footer {
+  & .bottom {
+    margin: 0;
+    max-width: 100%;
+    padding: 20px 140px;
+    width: 100%;
+
+    @media (max-width: 1440px) {
+      padding: 20px;
+    }
+	}
+
+  & .links {
+    display: none;
+  }
+}
+
+.full-width-content {
+  & .entry-content > *.alignfull {
+    margin: 0;
+    padding: 80px 140px;
+    width: 100%;
+
+    @media (max-width: 1440px) {
+      padding: 60px 20px;
+    }
+  }
+}
+
+h2 {
+  font-size: $h2-font-size;
+  font-weight: $h-font-weight;
+  margin: 40px auto;
+
+  @media (max-width: 425px) {
+    margin-top: 10px;
+  }
+}
+
+h3 {
+  font-size: $h3-font-size;
+  font-weight: $h-font-weight;
+  margin: 20px auto;
+}
+
+.entry-content,
+.sidebar {
+  & h2 {
+    clear: both;
+    margin-bottom: 40px;
+  }
+}
+
+.edsi-primary-menu {
+  background-color: $edsi-light-gray;
+  display: inline-grid;
+  grid-template-columns: 25% 75%;
+  height: 150px;
+  padding: 0 140px;
+  text-align: center;
+  width: 100%;
+
+  & img {
+    margin: auto;
+  }
+
+  & .nav-primary {
+    border: 0;
+    margin: auto;
+    margin-right: 0;
+
+    & .menu {
+      & ul {
+        background-color: $edsi-light-gray;
+    	}
+
+      & a {
+        background-color: $edsi-light-gray;
+        color: $edsi-dark-blue;
+        display: flex;
+        font-size: $edsi-menu-font-size;
+        font-weight: $h-font-weight;
+        padding: 23px 20px;
+        text-transform: inherit;
+
+        &:hover {
+          text-decoration: underline;
+    		}
+    	}
+    }
+
+    & div {
+      right: 0;
+    }
+  }
+
+  @media (max-width: 1440px) {
+    padding: 0 20px;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 100%;
+  }
+}
+
+.edsi-our-services-section {
+  background-color: $edsi-light-gray;
+
+  & .edsi-our-services-col {
+    background-color: $oserv-bg-color;
+    border-radius: 10px;
+    box-shadow: 2px 4px 10px -4px $oserv-border-color;
+    padding: 100px 50px;
+
+    @media (max-width: 1024px) {
+      padding: 50px 10px;
+    }
+
+    @media (max-width: 768px) {
+      padding: 100px 50px;
+    }
+
+    @media (max-width: 425px) {
+      padding: 50px 10px;
+    }
+  }
+
+  & h2 {
+    color: $edsi-dark-blue;
+    text-transform: uppercase;
+  }
+
+  & h3 {
+    color: $edsi-dark-blue;
+    text-transform: uppercase;
+  }
+
+  & p {
+    color: $edsi-dark-blue;
+    font-size: $p-font-size;
+    font-weight: $h-font-weight;
+  }
+}
+
+.edsi-gehs-section {
+  & span {
+    background-color: $edsi-dark-blue;
+  }
+
+  & .edsi-gehs-content-area {
+    padding: 0 25%;
+
+    @media (max-width: 1024px) {
+      padding: 0 5%;
+    }
+
+    @media (max-width: 425px) {
+      padding: 0;
+    }
+  }
+}
+
+.page-template {
+  &:not(.home-template-front-page) {
+    & .content-area {
+      padding: 0;
+    }
+
+    & .single {
+      & .content-area {
+        padding: 0;
+      }
+    }
+  }
+}
