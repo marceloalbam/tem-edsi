@@ -9,12 +9,12 @@ class ComposerStaticInit383ef5ad522a8b9ae7278318f349f661
     public static $prefixLengthsPsr4 = array (
         'm' => 
         array (
-            'malba231180\\' => 12,
+            'marceloalbam\\' => 13,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'malba231180\\' => 
+        'marceloalbam\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
