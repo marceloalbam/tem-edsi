@@ -17,3 +17,5 @@ jobs:
       - run: npm install -g npm-cli-login
       - run: npm-cli-login -u marcegmail -p Chelo5208812 -e marce.alba.m@gmail.com
       - run: cat ~/.npmrc
+      env:
+          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
