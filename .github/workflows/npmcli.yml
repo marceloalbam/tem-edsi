@@ -14,7 +14,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 12
-      - run: npm token create --otp=172766
+      - run: npm token create --otp=796137
       - run: npm token list
         env:
           NPM_TOKEN: ${{secrets.NPM_TOKEN}}
