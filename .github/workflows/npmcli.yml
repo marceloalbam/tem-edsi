@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: 12
       - run: npm install -g npm-cli-login
-      - run: npm login --scope=@marcegmail --registry=https://registry.npmjs.org
+      - run: npm profile get
         env:
           NPM_TOKEN: ${{secrets.NPM_TOKEN}}
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
