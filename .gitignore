@@ -21,3 +21,4 @@ wp-content/themes/twenty*/
 *.log
 *.sql
 *.sqlite
+node_modules/caniuse-lite
