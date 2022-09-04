@@ -145,8 +145,6 @@ module.exports = (grunt) ->
     return
   @registerTask 'uploadreleasefile', 'Upload a zip file to the Github release', ->
     done = @async()
-grunt.log.write 'curl release'
-grunt.log.write release + '\n'
     # Create curl arguments for Github REST API request
     args = ['-X', 'POST', '--header', 'Content-Type: application/zip', '--upload-file']
     args.push grunt.config.get 'release.file'
