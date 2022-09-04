@@ -121,7 +121,7 @@ module.exports = (grunt) ->
     ap2 = grunt.config.get 'release.post'
     grunt.config.get
     args = ['-X','POST','-H','"Authentication: access_token <%= release.key %>"']
-    args.push '--url ' ap1 ' -D ' ap2
+    args.push '--url ' + ap1 + ' -D ' + ap2
     grunt.log.write 'curl args:' + args
     grunt.util.spawn {
       cmd: 'curl'
