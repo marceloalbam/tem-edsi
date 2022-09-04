@@ -117,8 +117,8 @@ module.exports = (grunt) ->
     done = @async()
 
     # Create curl arguments for Github REST API request
-    
-    args.push -H "Authorization: success_token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXJuYW1lIjoibWFyY2Vsb2FsYmFtIiwiaWF0IjoxNjYyMjY3Nzg1LCJleHAiOjE2NjIyNjc5MDV9.A4SNNeZlDLrRbCY2xdxS4W2_8Kfv9ATzn6kc-9Pj5Mo" https://api.github.com/repos/marceloalbam/tem-edsi/releases
+    args = ['-H']
+    args.push 'Authorization: success_token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXJuYW1lIjoibWFyY2Vsb2FsYmFtIiwiaWF0IjoxNjYyMjY3Nzg1LCJleHAiOjE2NjIyNjc5MDV9.A4SNNeZlDLrRbCY2xdxS4W2_8Kfv9ATzn6kc-9Pj5Mo' https://api.github.com/repos/marceloalbam/tem-edsi/releases
     grunt.util.spawn {
       cmd: 'curl'
       args: args
