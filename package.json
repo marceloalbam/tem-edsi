@@ -1,6 +1,6 @@
 {
   "name": "tem-edsi",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "CTS variation of the TTIBase theme",
   "main": "tem-edsi.php",
   "scripts": {
@@ -31,6 +31,7 @@
     "what-input": "^5.2.10"
   },
   "devDependencies": {
+    "grunt-coffee-react": "^5.0.2",
     "grunt-contrib-watch": "^1.1.0",
     "grunt-sass-lint": "^0.2.4"
   },

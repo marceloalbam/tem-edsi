@@ -1,0 +1,17 @@
+{
+  "name": "coffee-react-jstransform",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/js-syntax-transform.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "./prepublish.sh"
+  },
+  "author": "James Friend <james@jsdf.co> (http://jsdf.co/)",
+  "license": "ISC",
+  "devDependencies": {
+    "react-tools": "^0.13.3",
+    "jstransform": "^10.1.0",
+    "browserify": "^4.1.8"
+  }
+}
