@@ -117,9 +117,12 @@ module.exports = (grunt) ->
     done = @async()
 
     # Create curl arguments for Github REST API request
-    args = ['-H', 'POST', '--url']
-    args.push 'Authorization: success_token <%= release.key %>'
-    args.push 'https://api.github.com/repos/marceloalbam/tem-edsi/releases'
+    args = ['-X','POST','--url']
+    args.push grunt.template.process 'https://api.github.com/repos/<%= release.repofullname %>/releases?access_token=<%= release.key %> '
+    args.push '--data'
+    args.push grunt.config.get 'release.post'
+    grunt.log.write 'curl args: ' + args
+    
     grunt.util.spawn {
       cmd: 'curl'
       args: args
