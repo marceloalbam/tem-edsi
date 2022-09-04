@@ -122,7 +122,7 @@ module.exports = (grunt) ->
     args.push '--data'
     args.push grunt.config.get 'release.post'
     grunt.log.write 'curl args: ' + args
-    
+        
     grunt.util.spawn {
       cmd: 'curl'
       args: args
