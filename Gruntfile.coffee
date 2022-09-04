@@ -118,7 +118,7 @@ module.exports = (grunt) ->
 
     # Create curl arguments for Github REST API request
     args = ['-H']
-    args.push 'Authorization: success_token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXJuYW1lIjoibWFyY2Vsb2FsYmFtIiwiaWF0IjoxNjYyMjY3Nzg1LCJleHAiOjE2NjIyNjc5MDV9.A4SNNeZlDLrRbCY2xdxS4W2_8Kfv9ATzn6kc-9Pj5Mo'
+    args.push 'Authorization: success_token <%= release.key %>'
     args.push 'https://api.github.com/repos/marceloalbam/tem-edsi/releases'
     grunt.util.spawn {
       cmd: 'curl'
@@ -143,7 +143,8 @@ module.exports = (grunt) ->
     return
   @registerTask 'uploadreleasefile', 'Upload a zip file to the Github release', ->
     done = @async()
-
+grunt.log.write 'curl release'
+grunt.log.write release + '\n'
     # Create curl arguments for Github REST API request
     args = ['-X', 'POST', '--header', 'Content-Type: application/zip', '--upload-file']
     args.push grunt.config.get 'release.file'
