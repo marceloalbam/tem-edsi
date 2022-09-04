@@ -121,10 +121,10 @@ module.exports = (grunt) ->
     args.push grunt.template.process 'https://api.github.com/repos/<%= release.repofullname %>/releases'
     args.push '--data'
     args.push grunt.config.get 'release.post'
-    grunt.log.write 'curl args:' + args
+    grunt.log.write 'curl args: ' + args
     grunt.util.spawn {
       cmd: 'curl'
-      args:args
+      args: args
     }, (err, result, code) ->
       grunt.log.write '\nResult: ' + result + '\n'
       grunt.log.write 'Error: ' + err + '\n'
