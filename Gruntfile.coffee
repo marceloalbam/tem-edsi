@@ -1,91 +1,37 @@
 module.exports = (grunt) ->
-  sass = require 'node-sass'
   @initConfig
     pkg: @file.readJSON('package.json')
-    watch:
-      files: [
-        'css/src/*.scss',
-        'js/src/*.coffee'
-      ]
-      tasks: ['develop']
-    postcss:
-      pkg:
-        options:
-          processors: [
-            require('autoprefixer')({browsers: ['last 2 versions','ie > 9']})
-          ]
-          failOnError: true
-        files:
-          'css/edsi.css':         'css/edsi.css'
-      dev:
-        options:
-          map: true
-          processors: [
-            require('autoprefixer')({browsers: ['last 2 versions','ie > 9']})
-          ]
-          failOnError: true
-        files:
-          'css/edsi.css':         'css/edsi.css'
-    sass:
-      pkg:
-        options:
-          implementation: sass
-          noSourceMap: true
-          outputStyle: 'compressed'
-          precision: 2
-          includePaths: ['node_modules/foundation-sites/scss']
-        files:
-          'css/edsi.css':         'css/src/edsi.scss'
-      dev:
-        options:
-          implementation: sass
-          sourceMap: true
-          outputStyle: 'nested'
-          precision: 2
-          includePaths: ['node_modules/foundation-sites/scss']
-        files:
-          'css/edsi.css':         'css/src/edsi.scss'
-    coffee:
-      compile:
-        options:
-          bare: true
-        files:
-          'js/subsite-menu.min.js': 'js/src/subsite-menu.coffee'
-          'js/exceptional-item.min.js': 'js/src/exceptional-item.coffee'
-    sasslint:
-      options:
-        configFile: '.sass-lint.yml'
-      target: ['css/src/**/*.s+(a|c)ss']
+    release:
+      branch: ''
+      repofullname: ''
+      lasttag: ''
+      msg: ''
+      post: ''
+      url: ''
     compress:
       main:
         options:
           archive: '<%= pkg.name %>.zip'
         files: [
+          {src: ['style.css']},
           {src: ['css/*.css']},
-          {src: ['fields/**']},
+          {src: ['js/*.js']},
           {src: ['images/**']},
-          {src: ['src/*.php']},
-          {src: ['templates/*.php']},
-          {src: ['vendor/autoload.php', 'vendor/composer/**']}
-          {src: ['tem-edsi.php']},
+          {src: ['src/**']},
+          {src: ['functions.php']},
+          {src: ['search.php']},
+          {src: ['members-only.php']},
           {src: ['readme.md']},
+          {src: ['vendor/autoload.php', 'vendor/composer/**']}
         ]
-
-  @loadNpmTasks 'grunt-contrib-coffee'
-  @loadNpmTasks 'grunt-contrib-watch'
   @loadNpmTasks 'grunt-contrib-compress'
-  @loadNpmTasks 'grunt-sass-lint'
-  @loadNpmTasks 'grunt-sass'
-  @loadNpmTasks 'grunt-postcss'
 
-  @registerTask 'default', ['sass:pkg', 'postcss:pkg', 'coffee']
-  @registerTask 'develop', ['sasslint', 'sass:dev', 'postcss:dev', 'coffee']
   @registerTask 'release', ['compress', 'makerelease']
   @registerTask 'makerelease', 'Set release branch for use in the release task', ->
     done = @async()
 
     # Define simple properties for release object
-    grunt.config 'release.key', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXJuYW1lIjoibWFyY2Vsb2FsYmFtIiwiaWF0IjoxNjYyMjY3Nzg1LCJleHAiOjE2NjIyNjc5MDV9.A4SNNeZlDLrRbCY2xdxS4W2_8Kfv9ATzn6kc-9Pj5Mo'
+    grunt.config 'release.key', process.env.RELEASE_KEY
     grunt.config 'release.file', grunt.template.process '<%= pkg.name %>.zip'
 
     grunt.util.spawn {
@@ -122,10 +68,10 @@ module.exports = (grunt) ->
 
     grunt.util.spawn {
       cmd: 'git'
-      args: [ 'describe', '--tags' ]
+      args: [ 'tag' ]
     }, (err, result, code) ->
       if result.stdout isnt ''
-        matches = result.stdout.match /([^\n]+)/
+        matches = result.stdout.match /([^\n]+)$/
         grunt.config 'release.lasttag', matches[1] + '..'
 
       grunt.task.run 'setmsg'
@@ -172,7 +118,7 @@ module.exports = (grunt) ->
 
     # Create curl arguments for Github REST API request
     args = ['-X', 'POST', '--url']
-    args.push grunt.template.process 'https://api.github.com/repos/<%= release.repofullname %>/releases?eccess_token=<%= release.key %>'
+    args.push grunt.template.process 'https://api.github.com/repos/<%= release.repofullname %>/releases?access_token=<%= release.key %>'
     args.push '--data'
     args.push grunt.config.get 'release.post'
     grunt.log.write 'curl args: ' + args
@@ -227,6 +173,3 @@ module.exports = (grunt) ->
       done(err)
       return
     return
-
-  @event.on 'watch', (action, filepath) =>
-    @log.writeln('#{filepath} has #{action}')
