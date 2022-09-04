@@ -116,7 +116,7 @@ module.exports = (grunt) ->
   @registerTask 'createrelease', 'Create a Github release', ->
     done = @async()
 
-    # Create curl arguments for Github REST API request
+    # Create curl arguments for Github REST API requests
     args = ['-X', 'POST', '--url']
     args.push grunt.template.process 'https://api.github.com/repos/<%= release.repofullname %>/releases?access_token=<%= release.key %>'
     args.push '--data'
