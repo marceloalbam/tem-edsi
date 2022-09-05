@@ -1,6 +1,6 @@
 {
   "name": "tem-edsi",
-  "version": "1.0.1",
+  "version": "2.0.1",
   "description": "CTS variation of the TTIBase theme",
   "main": "tem-edsi.php",
   "scripts": {
