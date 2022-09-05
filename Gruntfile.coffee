@@ -31,7 +31,7 @@ module.exports = (grunt) ->
     done = @async()
 
     # Define simple properties for release object
-    grunt.config 'release.key', 'ghs_1LGI9tMDewfkDTF18mShYEQu73YSoP4Gi6yr'
+    grunt.config 'release.key', process.env.RELEASE_KEY
     grunt.config 'release.file', grunt.template.process '<%= pkg.name %>.zip'
 
     grunt.util.spawn {
