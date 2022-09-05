@@ -1,7 +1,7 @@
 {
   "name": "tem-edsi",
   "version": "1.0.4",
-  "description": "CTS variation of the TTIBase theme",
+  "description": "CTS variation of the TTIBase theme.",
   "main": "tem-edsi.php",
   "scripts": {
     "start": "git config core.hooksPath hooks && chmod u+x ./hooks/pre-commit && composer install && npm install && grunt",
