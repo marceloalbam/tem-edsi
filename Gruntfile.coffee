@@ -49,7 +49,7 @@ module.exports = (grunt) ->
   @registerTask 'setrepofullname', 'Set repo full name for use in the release task', ->
     done = @async()
 
-    # Get repository owner and name for use in Github REST requests
+    # Get repository owner and name for use in Github REST requests.
     grunt.util.spawn {
       cmd: 'git'
       args: [ 'config', '--get', 'remote.origin.url' ]
