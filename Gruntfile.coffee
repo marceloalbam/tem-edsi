@@ -117,7 +117,7 @@ module.exports = (grunt) ->
     done = @async()
     
     # Create curl arguments for Github REST API request
-    args = ['-X','POST','-H','"Accept: application/vnd.github+json"','-H','"Authentication: access_token <%= release.key %>"','--url']
+    args = ['-X', 'POST', '-H', 'Accept: application/vnd.github.v3+json"', '-H', 'Authorization: Bearer <%= release.key %>', '--url']
     args.push grunt.template.process 'https://api.github.com/repos/<%= release.repofullname %>/releases'
     args.push '--data'
     args.push grunt.config.get 'release.post'
@@ -146,10 +146,10 @@ module.exports = (grunt) ->
   @registerTask 'uploadreleasefile', 'Upload a zip file to the Github release', ->
     done = @async()
     # Create curl arguments for Github REST API request
-    args = ['-X', 'POST', '--header', 'Content-Type: application/zip', '--upload-file']
+    args = ['-X', 'POST', '-H', 'Accept: application/vnd.github.v3+json"', '-H', 'Authorization: Bearer <%= release.key %>', '--header', 'Content-Type: application/zip', '--upload-file']
     args.push grunt.config.get 'release.file'
     args.push '--url'
-    args.push grunt.template.process 'https://uploads.github.com/repos/<%= release.repofullname %>/releases/<%= release.id %>/assets?access_token=<%= release.key %>&name=<%= release.file %>'
+    args.push grunt.template.process 'https://uploads.github.com/repos/<%= release.repofullname %>/releases/<%= release.id %>/assets?name=<%= release.file %>'
     grunt.log.write 'curl args: ' + args
 
     # Upload Github release asset using REST API
